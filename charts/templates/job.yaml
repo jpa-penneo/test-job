@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: test-job-job
+  name: test-job-job-{{ now | date "20060102150405" }}
   annotations:
-    re-trigger: "{{now}}"
+    "helm.sh/hook": pre-install,pre-upgrade
 spec:
   template:
     spec:
