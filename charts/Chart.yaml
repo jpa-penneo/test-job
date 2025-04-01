@@ -1,5 +1,5 @@
 apiVersion: v2
-name: test-job-chart
+name: test-job
 description: A simple Helm chart to print "hello world"
 type: application
 version: 0.1.0

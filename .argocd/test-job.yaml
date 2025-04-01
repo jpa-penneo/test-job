@@ -7,14 +7,14 @@ metadata:
     re-trigger: "{{ now }}"
 spec:
   project: default
+
   source:
-    repoURL: "git@github.com:jpa-penneo/test-job.git"
+    repoURL: https://github.com/jpa-penneo/test-job
     targetRevision: main
     path: charts/
-    chart: test-job
     helm:
-      valueFiles:
-        - values.yaml
+      releaseName: test-job
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
