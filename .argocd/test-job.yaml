@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test-job
+  namespace: argocd
+spec:
+  project: default
+  generators:
+    - list:
+        elements:
+          - name: test-job
+            timestamp: "{{ now }}"
+  template:
+    metadata:
+      name: "{{name}}"
+      annotations:
+        re-trigger: "{{timestamp}}"
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/jpa-penneo/test-job"
+        targetRevision: main
+        path: charts/
+        chart: test-job
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: default

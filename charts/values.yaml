@@ -1,0 +1,4 @@
+job:
+  name: test-job-job
+  image: alpine:latest
+  command: ["echo", "hello world"]

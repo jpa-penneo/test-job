@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.job.name }}
+spec:
+  template:
+    spec:
+      containers:
+        - name: test-job
+          image: {{ .Values.job.image }}
+          command: {{ .Values.job.command }}
+      restartPolicy: Never
+  backoffLimit: 4
